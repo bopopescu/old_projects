@@ -1,0 +1,5 @@
+	done    halt                            end of program
+One .fill 1
+Two .fill 2
+Three .fill 3
+Four .fill 4

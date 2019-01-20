@@ -1,0 +1,6 @@
+		beq     0       0      Five    defined global
+Start   lw      1       2       Start   GLOBAL ON ONE LINE TEST
+done    halt                            
+Five    .fill   Five
+neg1    .fill   -1
+wefoij  .fill 	UndefG

@@ -1,0 +1,19 @@
+		lw 0 1 one reg1 1
+		lw 1 2 data reg2 5
+		lw 2 3 one reg3 3
+		nor 3 3 5 reg5 6
+		add 5 5 5 reg5 12
+		nor 5 5 5 reg5 3
+loop 	beq 5 3 done
+		lw 6 0 res load 3 into 0
+		nor 7 6 2 store 0 into 2
+		sw 7 0 res store3 into res
+		add 1 3 3 reg3++
+		beq 0 0 loop
+done 	halt
+one 	.fill 1
+data 	.fill 0
+base 	.fill 5
+		.fill -10
+		.fill 2
+res 	.fill 3

@@ -1,0 +1,13 @@
+		lw 0 2 one //lw1
+		lw 0 2 num1 //lw2
+		lw 0 2 num2 //lw3
+		add 2 2 2 //add1
+		add 2 2 2 //lw4
+		lw 0 2 one //lw1
+		nor 1 2 4 //nor1
+		lw 0 2 one //lw1
+		nor 2 1 4 //nor1
+		halt //halt
+one 	.fill 1
+num1 	.fill 7
+num2 	.fill 4

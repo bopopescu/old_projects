@@ -1,0 +1,16 @@
+test cases
+undefined labels
+duplicate labels
+offsetfields over 16 bits, negative numbers
+unrecognized opcodes
+
+negative numbers in beq
+lw and sw 
+
+for pretty negative numbers anding with 0s are not properly truncating
+not checking for undefined labels
+
+add first line to test2 if test cases drop
+
+gcc -lm -std=c99 lc2k-assembler.c -o assembler
+/afs/umich.edu/class/eecs370/bin/submit370 1a lc2k-assembler.c test1.as test2.as test3.as test4.as test5.as test6.as

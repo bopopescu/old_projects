@@ -1,0 +1,7 @@
+Glob	lw   7    1   Glob
+Hello 	sw   5    3   Hello
+Random	beq   7    1  Five
+Rand 	sw   5    3   Neg1
+Five    .fill   Five
+Neg1    .fill   -1
+stAddr  .fill   start

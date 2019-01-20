@@ -1,0 +1,71 @@
+        // Base Case
+start   beq 0 2 return  branch to return if r = 0, base case handling
+        beq 1 2 return  branch to return if n = r
+
+        // First half of recursive call
+        lw  0 6 pos1    load 1 into reg6
+        sw  5 7 Stack   Store return addr into stack
+        add 5 6 5       Increment stack pointer
+
+        lw  0 6 neg1    load -1 into reg6
+        add 1 6 1       subtract 1 from n
+        lw  0 6 Caddr   load start of function into 6
+        jalr 6 7        recursive call
+        
+        // Second half of recursive call
+        lw  0 6 pos1    load 1 into reg6
+        sw  5 3 Stack   store answer of first part in memory
+        add 5 6 5       Increment stack pointer
+        lw  0 6 neg1    load -1 into reg6
+        add 2 6 2       subtract 1 from r
+        lw  0 6 Caddr   load start of function into 6
+        jalr 6 7        recursive call
+        
+        // Returning the sum result
+        lw  0 6 neg1    load -1 into reg6
+        add 5 6 5       decrement stack pointer
+        lw  5 4 Stack   retrieve first part answer from mem
+        add 3 4 3       add the two parts together
+        add 5 6 5       decrement stack pointer
+        lw  5 7 Stack   Load return address into reg7
+
+        lw  0 6 pos1    load 1 into reg6
+        add 1 6 1       re increment n since we're going up one call stack
+        add 2 6 2       re increment r since we're going up one call stack
+        jalr 7 4        return call stack         
+
+        //Base case return handling
+return  lw  0 3 pos1
+        jalr 7 4        return base case
+
+        // Auxillary data
+pos1	.fill	1
+neg1	.fill	-1
+Caddr   .fill start
+
+Your combination function must follow these guidelines:
+    1.) Accept n as an argument passed in register 1
+    2.) Accept r as an argument passed in register 2
+    3.) Store the starting line of your combination function by 
+including the following line in data:
+Caddr .fill <start_of_function> 
+<start_of_function> is a label at the start of your function
+4.) Use recursion by building a stack frame for each function called
+    5.) Return the result in register 3
+    6.) Use register 7 as the return address
+    7.) DO NOT use a global register
+    8.) DO NOT use a global register
+        seriously, we’ll detect it
+
+Make sure your assembly-language function works when assembled and linked with combination_main.as. Use the Project 2 assembler and linker and the Project 1 simulator, since that's how we'll test it. Programs that don't work with the solution assembler/linker/simulator will receive a 0.
+
+5.1 Tips
+    r0  value 0 - PERMANENT?
+    r1  n input to function - ENFORCED
+    r2  r input to function - ENFORCED
+    r3  return value of function - ENFORCED
+    r4  local variable for function
+    r5  stack pointer - PERMANENT?
+    r6  temporary value (can hold different values at different times, 
+e.g., +1, -1, function address)
+    r7  return address - ENFORCED

@@ -1,0 +1,24 @@
+	lw	0	1	first
+	lw	0	2	second
+	lw	0	3	third
+	lw	0	4	four
+	noop
+	noop
+	noop
+	noop
+	lw	0	5	first
+	beq	5	1	dab
+	add	6	6	7
+dab	lw	0	6	second	(12)
+	sw	6	2	0
+	lw	0	7	third
+	add	7	7	7
+	lw	0	0	four
+	nor	0	0	3
+	lw	1	1	second
+	lw	1	5	four
+	halt
+first	.fill	1
+second	.fill	2
+third	.fill	3
+four	.fill	4

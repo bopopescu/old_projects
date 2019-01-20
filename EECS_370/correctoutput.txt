@@ -1,0 +1,64 @@
+		lw 0 1 five
+		lw 0 4 SubAdr
+start 	jalr 4 7
+		beq 0 1 done
+		beq 0 0 start
+done 	halt
+five 	.fill 5
+-------- main.obj ---------
+6 1 1 2 (Header) (text, data, symnbol, relocation table)
+8454150 (Text)
+8650752
+23527424
+16842753
+16842749
+25165824
+5 (Data)
+SubAdr U 0 (Symbol Table)
+0 lw five (Relocation Table)
+1 lw SubAdr
+
+subOne 	lw 0 2 neg1
+		add 1 2 1
+		jalr 7 6
+neg1 	.fill -1
+SubAdr 	.fill subOne
+-------- subone.obj -------
+3 2 1 2 (Header)
+8519683 (Text)
+655361
+25034752
+-1 (Data)
+0
+SubAdr D 1 (Symbol Table)
+0 lw neg1 (Relocation Table)
+1 .fill subOne
+
+
+1.) duplicate defined global labels 
+2.) undefined global labels
+3.) “Stack” label defined by an object file
+
+test 1: spec test
+test 2: error, duplicate defined global
+test 3: undefined global
+test 4: DELETE Stack label defined by object file, REPLACE with Stack used normally
+
+/afs/umich.edu/class/eecs370/bin/submit370 2l p2_link.c ltest1_1.txt ltest1_2.txt ltest2_1.txt ltest2_2.txt ltest3_1.txt ltest4_1.txt ltest5_1.txt ltest5_2.txt
+
+-------- count5.mc -------
+
+8454153		(main.as 	TEXT)
+8650763
+23527424
+16842753
+16842749
+25165824
+8519690		(subone.as 	TEXT)
+655361
+25034752
+5			(main.as 	DATA)
+-1			(subone.as	DATA)
+6
+
+t

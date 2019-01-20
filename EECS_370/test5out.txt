@@ -1,0 +1,7 @@
+2 0 2 2
+12124161
+15400960
+Glob T 1
+Hello U 0
+0 lw Glob
+1 sw Hello

@@ -1,0 +1,3 @@
+		lw	0	1	One
+		lw	1	2	Data
+One		.fill 1
